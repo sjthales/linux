@@ -160,12 +160,12 @@ do {						\
 	({						\
 		unsigned long _flags;			\
 		raw_local_save_flags(_flags);		\
-		pr_info("	raw_local_save_flags ok\n");			\
+		pr_info("\traw_local_save_flags ok\n");			\
 		raw_irqs_disabled_flags(_flags);	\
-		pr_info("	raw_irqs_disabled_flags ok\n");			\
+		pr_info("\traw_irqs_disabled_flags ok\n");			\
 	})
 #else /* !CONFIG_TRACE_IRQFLAGS_SUPPORT */
-#define irqs_disabled()	raw_irqs_disabled()
+#define irqs_disabled()	do { raw_irqs_disabled(); pr_info("\traw_irqs_disabled ok\n"); } while (0)
 #endif /* CONFIG_TRACE_IRQFLAGS_SUPPORT */
 
 #define irqs_disabled_flags(flags) raw_irqs_disabled_flags(flags)
