@@ -710,7 +710,7 @@ asmlinkage __visible void __init start_kernel(void)
 	pr_info("profile_init ok\n");
 	call_function_init();
 	pr_info("call_function_init ok\n");
-	WARN(!irqs_disabled(), "Interrupts were enabled early\n");
+	//WARN(!irqs_disabled(), "Interrupts were enabled early\n");
 	pr_info("Interrupts were enabled early ok\n");
 
 	early_boot_irqs_disabled = false;
