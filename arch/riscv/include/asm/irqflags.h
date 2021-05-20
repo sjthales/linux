@@ -17,6 +17,7 @@
 
 #include <asm/processor.h>
 #include <asm/csr.h>
+#include <linux/kernel.h>
 
 /* read interrupt enabled status */
 static inline unsigned long arch_local_save_flags(void)
