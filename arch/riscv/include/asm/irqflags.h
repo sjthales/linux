@@ -17,15 +17,15 @@
 
 #include <asm/processor.h>
 #include <asm/csr.h>
-#include <linux/kernel.h>
-#include <linux/printk.h>
+//#include <linux/kernel.h>
+//#include <linux/printk.h>
 
 /* read interrupt enabled status */
 static inline unsigned long arch_local_save_flags(void)
 {
 	//unsigned long flag;
 	//flag = csr_read(sstatus);
-	pr_info("2 arch_local_save_flags \n" );
+	//pr_info("2 arch_local_save_flags \n" );
 	//printk(KERN_INFO "2 arch_local_save_flags csr_read(sstatus)= %lx \n", flag);
 	return csr_read(sstatus);
 	
@@ -53,7 +53,7 @@ static inline unsigned long arch_local_irq_save(void)
 static inline int arch_irqs_disabled_flags(unsigned long flags)
 {
 	//printk("2 arch_irqs_disabled_flags flags= %lx SR_SIE=%lx \n", (unsigned long)flags, (unsigned long)SR_SIE );
-	pr_info("2 arch_irqs_disabled_flags \n");
+	//pr_info("2 arch_irqs_disabled_flags \n");
 	return !(flags & SR_SIE);
 }
 
