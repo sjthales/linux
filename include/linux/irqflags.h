@@ -107,7 +107,7 @@ do {						\
  */
 #ifdef CONFIG_TRACE_IRQFLAGS
 #define local_irq_enable() \
-	do { trace_hardirqs_on(); raw_local_irq_enable(); } while (0)
+	do { trace_hardirqs_on(); pr_info("\ttrace_hardirqs_on ok\n"); raw_local_irq_enable(); pr_info("\traw_local_irq_enable ok\n"); } while (0)
 #define local_irq_disable() \
 	do { raw_local_irq_disable(); trace_hardirqs_off(); } while (0)
 #define local_irq_save(flags)				\
@@ -137,7 +137,7 @@ do {						\
 
 #else /* !CONFIG_TRACE_IRQFLAGS */
 
-#define local_irq_enable()	do { raw_local_irq_enable(); } while (0)
+#define local_irq_enable()	do { raw_local_irq_enable(); pr_info("\traw_local_irq_enable ok\n"); } while (0)
 #define local_irq_disable()	do { raw_local_irq_disable(); } while (0)
 #define local_irq_save(flags)					\
 	do {							\
