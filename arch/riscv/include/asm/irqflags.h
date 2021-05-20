@@ -21,6 +21,7 @@
 /* read interrupt enabled status */
 static inline unsigned long arch_local_save_flags(void)
 {
+	pr_info("2 arch_local_save_flags csr_read(sstatus)= %x \n", csr_read(sstatus) );
 	return csr_read(sstatus);
 }
 
@@ -45,6 +46,7 @@ static inline unsigned long arch_local_irq_save(void)
 /* test flags */
 static inline int arch_irqs_disabled_flags(unsigned long flags)
 {
+	pr_info("2 arch_irqs_disabled_flags flags= %x SR_SIE=%x \n", flags, SR_SIE );
 	return !(flags & SR_SIE);
 }
 
