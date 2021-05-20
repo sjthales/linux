@@ -22,9 +22,12 @@
 /* read interrupt enabled status */
 static inline unsigned long arch_local_save_flags(void)
 {
+	unsigned long flag;
+	flag = csr_read(sstatus);
 	//pr_info("2 arch_local_save_flags csr_read(sstatus)= %x \n", csr_read(sstatus) );
-	printk("2 arch_local_save_flags csr_read(sstatus)= %lx \n", (unsigned long)(csr_read(sstatus)));
+	printk(KERN_INFO "2 arch_local_save_flags csr_read(sstatus)= %lx \n", flag);
 	return csr_read(sstatus);
+	
 }
 
 /* unconditionally enable interrupts */
