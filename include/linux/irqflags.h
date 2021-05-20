@@ -107,7 +107,7 @@ do {						\
  */
 #ifdef CONFIG_TRACE_IRQFLAGS
 #define local_irq_enable() \
-	do { trace_hardirqs_on(); pr_info("\ttrace_hardirqs_on ok\n"); raw_local_irq_enable(); pr_info("\traw_local_irq_enable ok\n"); } while (0)
+	do { trace_hardirqs_on(); pr_info("1 trace_hardirqs_on ok\n"); raw_local_irq_enable(); pr_info("1 raw_local_irq_enable ok\n"); } while (0)
 #define local_irq_disable() \
 	do { raw_local_irq_disable(); trace_hardirqs_off(); } while (0)
 #define local_irq_save(flags)				\
@@ -137,7 +137,7 @@ do {						\
 
 #else /* !CONFIG_TRACE_IRQFLAGS */
 
-#define local_irq_enable()	do { raw_local_irq_enable(); pr_info("\traw_local_irq_enable ok\n"); } while (0)
+#define local_irq_enable()	do { raw_local_irq_enable(); pr_info("1 raw_local_irq_enable ok\n"); } while (0)
 #define local_irq_disable()	do { raw_local_irq_disable(); } while (0)
 #define local_irq_save(flags)					\
 	do {							\
@@ -160,12 +160,12 @@ do {						\
 	({						\
 		unsigned long _flags;			\
 		raw_local_save_flags(_flags);		\
-		pr_info("\traw_local_save_flags ok\n");			\
+		pr_info("1 raw_local_save_flags ok\n");			\
 		raw_irqs_disabled_flags(_flags);	\
-		pr_info("\traw_irqs_disabled_flags ok\n");			\
+		pr_info("1 raw_irqs_disabled_flags ok\n");			\
 	})
 #else /* !CONFIG_TRACE_IRQFLAGS_SUPPORT */
-#define irqs_disabled()	do { raw_irqs_disabled(); pr_info("\traw_irqs_disabled ok\n"); } while (0)
+#define irqs_disabled()	do { raw_irqs_disabled(); pr_info(" 1 raw_irqs_disabled ok\n"); } while (0)
 #endif /* CONFIG_TRACE_IRQFLAGS_SUPPORT */
 
 #define irqs_disabled_flags(flags) raw_irqs_disabled_flags(flags)
