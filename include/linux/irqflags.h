@@ -91,12 +91,16 @@ do {						\
 #define raw_local_save_flags(flags)			\
 	do {						\
 		typecheck(unsigned long, flags);	\
+		pr_info("2 0 typecheck ok\n");	        \
 		flags = arch_local_save_flags();	\
+		pr_info("2 arch_local_save_flags ok\n");	        \
 	} while (0)
 #define raw_irqs_disabled_flags(flags)			\
 	({						\
 		typecheck(unsigned long, flags);	\
+		pr_info("2 1 typecheck ok\n");	        \
 		arch_irqs_disabled_flags(flags);	\
+		pr_info("2 arch_irqs_disabled_flags ok\n");	        \
 	})
 #define raw_irqs_disabled()		(arch_irqs_disabled())
 #define raw_safe_halt()			arch_safe_halt()
